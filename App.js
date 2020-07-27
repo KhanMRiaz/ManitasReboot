@@ -1,11 +1,12 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
+import { StatusBar } from 'react-native';
 // navigation imports
-import {createAppContainer, createSwitchNavigator} from 'react-navigation';
-import {createDrawerNavigator} from 'react-navigation-drawer';
-import {createStackNavigator} from 'react-navigation-stack';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createStackNavigator } from 'react-navigation-stack';
 //constants
-import {screenWidth} from './src/globalConstans/GlobalConstants';
+import { screenWidth } from './src/globalConstans/GlobalConstants';
+import colors from './src/globalConstans/colors';
 //auth screens imports
 import LandingScreen from './src/screens/auth/LandingScreen';
 import LoginScreen from './src/screens/auth/LoginScreen';
@@ -15,6 +16,7 @@ import SignUpUserA from './src/screens/auth/userARegistrationScreens/SignUpUserA
 import HomeScreenA from './src/screens/main/UserA/HomeScreenA';
 import SignUpStepOne from './src/screens/auth/userBRegistrationScreens/SignUpStepOne';
 import SignUpStepTwo from './src/screens/auth/userBRegistrationScreens/SignUpStepTwo';
+import SignUpStepThree from './src/screens/auth/userBRegistrationScreens/SignUpStepThree';
 
 const AuthStack = createStackNavigator({
   LandingScreen: {
@@ -49,7 +51,18 @@ const AuthStack = createStackNavigator({
   },
   SignUpStepTwo: {
     screen: SignUpStepTwo,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerBackTitle: '   '
+    }
   },
+  SignUpStepThree: {
+    screen: SignUpStepThree,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerBackTitle: '   '
+    }
+  }
 });
 const MainStack = createStackNavigator({
   HomeScreenA: {
@@ -72,6 +85,6 @@ const AppNav = createSwitchNavigator({
   },
 });
 
-StatusBar.setBackgroundColor('#004150');
+StatusBar.setBackgroundColor(colors.theme);
 const App = createAppContainer(AppNav);
 export default App;

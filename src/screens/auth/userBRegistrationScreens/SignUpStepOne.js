@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   View,
@@ -9,8 +9,8 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
-import Menu, {MenuItem, MenuDivider} from 'react-native-material-menu';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
+import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 //api imports
 import userARegisterCall from '../../../api/UserARegister';
 //spinner imports
@@ -128,61 +128,61 @@ export default class SignUpStepOne extends Component {
   };
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <KeyboardAwareScrollView>
-          <View style={{marginTop: 0.01 * screenHeight}} />
+          <View style={{ marginTop: 0.01 * screenHeight }} />
           {/* logo/header */}
           <Image
             style={styles.logo}
             source={require('../../../assets/auth/landingScreen/manitas.png')}
           />
           {/* input fields */}
-          <View style={{marginTop: 0.1 * screenHeight}} />
+          <View style={{ marginTop: 0.1 * screenHeight }} />
           <Text style={styles.inputFieldsLabel}>Name</Text>
-          <View style={{marginTop: 0.005 * screenHeight}} />
+          <View style={{ marginTop: 0.005 * screenHeight }} />
           <TextInput
             style={styles.inputFields}
             placeholder={'John'}
             placeholderTextColor={colors.lightGrey}
             value={this.state.name}
-            onChangeText={(text) => this.setState({name: text})}
+            onChangeText={(text) => this.setState({ name: text })}
           />
-          <View style={{marginTop: 0.04 * screenHeight}} />
+          <View style={{ marginTop: 0.04 * screenHeight }} />
           <Text style={styles.inputFieldsLabel}>Email</Text>
-          <View style={{marginTop: 0.005 * screenHeight}} />
+          <View style={{ marginTop: 0.005 * screenHeight }} />
           <TextInput
             style={styles.inputFields}
             placeholder={'Johndoeseryices@gmail.com'}
             placeholderTextColor={colors.lightGrey}
             value={this.state.email}
-            onChangeText={(text) => this.setState({email: text})}
+            onChangeText={(text) => this.setState({ email: text })}
           />
-          <View style={{marginTop: 0.04 * screenHeight}} />
+          <View style={{ marginTop: 0.04 * screenHeight }} />
           <Text style={styles.inputFieldsLabel}>Password</Text>
-          <View style={{marginTop: 0.005 * screenHeight}} />
+          <View style={{ marginTop: 0.005 * screenHeight }} />
           <TextInput
             style={styles.inputFields}
             placeholder={'Password'}
             placeholderTextColor={colors.lightGrey}
             secureTextEntry={true}
             value={this.state.password}
-            onChangeText={(text) => this.setState({password: text})}
+            onChangeText={(text) => this.setState({ password: text })}
           />
-          <View style={{marginTop: 0.04 * screenHeight}} />
+          <View style={{ marginTop: 0.04 * screenHeight }} />
           <Text style={styles.inputFieldsLabel}>Confirm Password</Text>
-          <View style={{marginTop: 0.005 * screenHeight}} />
+          <View style={{ marginTop: 0.005 * screenHeight }} />
           <TextInput
             style={styles.inputFields}
             placeholder={'Password'}
             placeholderTextColor={colors.lightGrey}
             secureTextEntry={true}
             value={this.state.confirmPassword}
-            onChangeText={(text) => this.setState({confirmPassword: text})}
+            onChangeText={(text) => this.setState({ confirmPassword: text })}
           />
           {/* /city */}
-          <View style={{marginTop: 0.04 * screenHeight}} />
+          <View style={{ marginTop: 0.04 * screenHeight }} />
           <Text style={styles.inputFieldsLabel}>City</Text>
-          <View style={{marginTop: 0.005 * screenHeight}} />
+          <View style={{ marginTop: 0.005 * screenHeight }} />
 
           <Menu
             style={{
@@ -193,7 +193,7 @@ export default class SignUpStepOne extends Component {
             ref={this.setMenuRef}
             button={
               <View style={styles.dropdownFieldContainer}>
-                <Text style={{fontSize: 0.02 * screenHeight}}>
+                <Text style={{ fontSize: 0.02 * screenHeight }}>
                   {this.state.city}
                 </Text>
                 <TouchableOpacity onPress={this.showMenu}>
@@ -204,58 +204,58 @@ export default class SignUpStepOne extends Component {
               </View>
             }>
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{ height: 0.05 * screenHeight }}
               onPress={() => {
-                this.setState({city: 'Tallinn'}, this.hideMenu);
+                this.setState({ city: 'Tallinn' }, this.hideMenu);
               }}>
               Tallinn
             </MenuItem>
             <MenuDivider />
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{ height: 0.05 * screenHeight }}
               onPress={() => {
-                this.setState({city: 'Loksa'}, this.hideMenu);
+                this.setState({ city: 'Loksa' }, this.hideMenu);
               }}>
               Loksa
             </MenuItem>
             <MenuDivider />
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{ height: 0.05 * screenHeight }}
               onPress={() => {
-                this.setState({city: 'Maardu'}, this.hideMenu);
+                this.setState({ city: 'Maardu' }, this.hideMenu);
               }}>
               Maardu
             </MenuItem>
             <MenuDivider />
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{ height: 0.05 * screenHeight }}
               onPress={() => {
-                this.setState({city: 'Paldiski'}, this.hideMenu);
+                this.setState({ city: 'Paldiski' }, this.hideMenu);
               }}>
               Paldiski
             </MenuItem>
             <MenuDivider />
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{ height: 0.05 * screenHeight }}
               onPress={() => {
-                this.setState({city: 'Saue'}, this.hideMenu);
+                this.setState({ city: 'Saue' }, this.hideMenu);
               }}>
               Saue
             </MenuItem>
             <MenuDivider />
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{ height: 0.05 * screenHeight }}
               onPress={() => {
-                this.setState({city: 'Keila'}, this.hideMenu);
+                this.setState({ city: 'Keila' }, this.hideMenu);
               }}>
               Keila
             </MenuItem>
             <MenuDivider />
           </Menu>
           {/* i work as  */}
-          <View style={{marginTop: 0.04 * screenHeight}} />
+          <View style={{ marginTop: 0.04 * screenHeight }} />
           <Text style={styles.inputFieldsLabel}>I work as</Text>
-          <View style={{marginTop: 0.005 * screenHeight}} />
+          <View style={{ marginTop: 0.005 * screenHeight }} />
 
           <Menu
             style={{
@@ -266,7 +266,7 @@ export default class SignUpStepOne extends Component {
             ref={this.setMenuRef1}
             button={
               <View style={styles.dropdownFieldContainer}>
-                <Text style={{fontSize: 0.02 * screenHeight}}>
+                <Text style={{ fontSize: 0.02 * screenHeight }}>
                   {this.state.workAs}
                 </Text>
                 <TouchableOpacity onPress={this.showMenu1}>
@@ -277,41 +277,41 @@ export default class SignUpStepOne extends Component {
               </View>
             }>
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{ height: 0.05 * screenHeight }}
               onPress={() => {
-                this.setState({workAs: 'Private'}, this.hideMenu1);
+                this.setState({ workAs: 'Private' }, this.hideMenu1);
               }}>
               Private
             </MenuItem>
             <MenuDivider />
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{ height: 0.05 * screenHeight }}
               onPress={() => {
-                this.setState({workAs: 'Company'}, this.hideMenu1);
+                this.setState({ workAs: 'Company' }, this.hideMenu1);
               }}>
               Company
             </MenuItem>
             <MenuDivider />
           </Menu>
           {/* note text */}
-          <View style={{marginTop: 0.05 * screenHeight}} />
+          <View style={{ marginTop: 0.04 * screenHeight }} />
           <Text style={styles.noteText}>
             By clicking Sign Up, you agree to our{' '}
-            <Text style={{textDecorationLine: 'underline'}}>Terms</Text>
+            <Text style={{ textDecorationLine: 'underline' }}>Terms</Text>
           </Text>
           <Text style={styles.noteText}>
             Learn how we collect, use and share your data in our{' '}
-            <Text style={{textDecorationLine: 'underline'}}>data policy </Text>
+            <Text style={{ textDecorationLine: 'underline' }}>data policy </Text>
             and how we use cookies and similar technology in our{' '}
-            <Text style={{textDecorationLine: 'underline'}}>
+            <Text style={{ textDecorationLine: 'underline' }}>
               cookies policy
             </Text>{' '}
           </Text>
-          <View style={{marginTop: 0.06 * screenHeight}} />
+          <View style={{ marginTop: 0.05 * screenHeight }} />
           <TouchableOpacity
             style={styles.signupButton}
             onPress={() => this.signupButtonPress()}>
-            <Text style={{fontSize: 0.022 * screenHeight, color: 'white'}}>
+            <Text style={{ fontSize: 0.022 * screenHeight, color: 'white' }}>
               Sign Up
             </Text>
           </TouchableOpacity>
