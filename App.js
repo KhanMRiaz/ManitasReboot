@@ -12,11 +12,13 @@ import LandingScreen from './src/screens/auth/LandingScreen';
 import LoginScreen from './src/screens/auth/LoginScreen';
 import selectUserTypeScreen from './src/screens/auth/SelectUserTypeScreen';
 import SignUpUserA from './src/screens/auth/userARegistrationScreens/SignUpUserA';
-//main screens imports
-import HomeScreenA from './src/screens/main/UserA/HomeScreenA';
 import SignUpStepOne from './src/screens/auth/userBRegistrationScreens/SignUpStepOne';
 import SignUpStepTwo from './src/screens/auth/userBRegistrationScreens/SignUpStepTwo';
 import SignUpStepThree from './src/screens/auth/userBRegistrationScreens/SignUpStepThree';
+import SignUpStepFour from './src/screens/auth/userBRegistrationScreens/SignUpStepFour';
+import SignUpStepFive from './src/screens/auth/userBRegistrationScreens/SignUpStepFive';
+//main screens imports
+import HomeScreenA from './src/screens/main/UserA/HomeScreenA';
 
 const AuthStack = createStackNavigator({
   LandingScreen: {
@@ -63,6 +65,20 @@ const AuthStack = createStackNavigator({
       headerBackTitle: '   ',
     },
   },
+  SignUpStepFour: {
+    screen: SignUpStepFour,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerBackTitle: '   ',
+    },
+  },
+  SignUpStepFive: {
+    screen: SignUpStepFive,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerBackTitle: '   ',
+    },
+  },
 });
 const MainStack = createStackNavigator({
   HomeScreenA: {
@@ -86,5 +102,5 @@ const AppNav = createSwitchNavigator({
 });
 
 StatusBar.setBackgroundColor(colors.theme);
-const App = createAppContainer(TestNav);
+const App = createAppContainer(AppNav);
 export default App;

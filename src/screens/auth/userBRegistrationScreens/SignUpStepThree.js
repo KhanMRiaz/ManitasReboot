@@ -79,7 +79,7 @@ export default class SignUpStepThree extends Component {
   };
   nextButtonPress = () => {
     if (this.citySelected === true) {
-      console.log('next press getting called');
+      this.props.navigation.navigate('SignUpStepFour');
     }
   };
   render() {
