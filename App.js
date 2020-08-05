@@ -1,11 +1,11 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import {StatusBar} from 'react-native';
 // navigation imports
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createDrawerNavigator } from 'react-navigation-drawer';
-import { createStackNavigator } from 'react-navigation-stack';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import {createDrawerNavigator} from 'react-navigation-drawer';
+import {createStackNavigator} from 'react-navigation-stack';
 //constants
-import { screenWidth } from './src/globalConstans/GlobalConstants';
+import {screenWidth} from './src/globalConstans/GlobalConstants';
 import colors from './src/globalConstans/colors';
 //auth screens imports
 import LandingScreen from './src/screens/auth/LandingScreen';
@@ -53,16 +53,16 @@ const AuthStack = createStackNavigator({
     screen: SignUpStepTwo,
     navigationOptions: {
       headerTintColor: 'white',
-      headerBackTitle: '   '
-    }
+      headerBackTitle: '   ',
+    },
   },
   SignUpStepThree: {
     screen: SignUpStepThree,
     navigationOptions: {
       headerTintColor: 'white',
-      headerBackTitle: '   '
-    }
-  }
+      headerBackTitle: '   ',
+    },
+  },
 });
 const MainStack = createStackNavigator({
   HomeScreenA: {
@@ -72,7 +72,7 @@ const MainStack = createStackNavigator({
 
 const TestNav = createSwitchNavigator({
   MainStack: {
-    screen: SignUpStepTwo,
+    screen: HomeScreenA,
   },
 });
 
@@ -86,5 +86,5 @@ const AppNav = createSwitchNavigator({
 });
 
 StatusBar.setBackgroundColor(colors.theme);
-const App = createAppContainer(AppNav);
+const App = createAppContainer(TestNav);
 export default App;
