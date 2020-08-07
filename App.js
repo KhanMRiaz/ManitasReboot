@@ -17,6 +17,7 @@ import SignUpStepTwo from './src/screens/auth/userBRegistrationScreens/SignUpSte
 import SignUpStepThree from './src/screens/auth/userBRegistrationScreens/SignUpStepThree';
 import SignUpStepFour from './src/screens/auth/userBRegistrationScreens/SignUpStepFour';
 import SignUpStepFive from './src/screens/auth/userBRegistrationScreens/SignUpStepFive';
+import SignUpStepSix from './src/screens/auth/userBRegistrationScreens/SignUpStepSix';
 //main screens imports
 import HomeScreenA from './src/screens/main/UserA/HomeScreenA';
 
@@ -74,6 +75,13 @@ const AuthStack = createStackNavigator({
   },
   SignUpStepFive: {
     screen: SignUpStepFive,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerBackTitle: '   ',
+    },
+  },
+  SignUpStepSix: {
+    screen: SignUpStepSix,
     navigationOptions: {
       headerTintColor: 'white',
       headerBackTitle: '   ',
