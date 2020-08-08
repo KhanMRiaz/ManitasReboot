@@ -254,7 +254,7 @@ export default class SignUpUserA extends Component {
               cookies policy
             </Text>{' '}
           </Text>
-          <View style={{marginTop: 0.14 * screenHeight}} />
+          <View style={{marginTop: 0.12 * screenHeight}} />
           <TouchableOpacity
             style={styles.signupButton}
             onPress={() => this.signupButtonPress()}>
@@ -262,6 +262,7 @@ export default class SignUpUserA extends Component {
               Sign Up
             </Text>
           </TouchableOpacity>
+          <View style={{marginTop: 0.02 * screenHeight}} />
         </KeyboardAwareScrollView>
         {this.spinnerRendrer()}
       </SafeAreaView>

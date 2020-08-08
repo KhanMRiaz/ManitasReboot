@@ -36,73 +36,363 @@ export default class SignUpStepFour extends Component {
     );
     console.log('received: ', this.selectedCategories);
     this.state = {
-      cleaningSubcategories: [],
-      airConditioningSubcategories: [],
-      handymanSubcategories: [],
-      plumbingSubcategories: [],
-      electricitySubcategories: [],
-      movingServiceSubcategories: [],
-      paintingSubcategories: [],
-      electricalDevicesSubcategories: [],
+      showWarning: false,
+      allowNavigate: false,
+      cleaningSubcategories: ['home', 'office', 'industrial', 'hotelOrRental'],
+      airConditioningSubcategories: [
+        'acInstallation',
+        'acMaintenanceOrRepair',
+        'heatingInstallation',
+        'heatingMaintenanceOrRepair',
+      ],
+      handymanSubcategories: [
+        'furnitureAssembly',
+        'smallRepairs',
+        'hangingShelfOrTv',
+      ],
+      plumbingSubcategories: [
+        'installOrRepairPlumbing',
+        'wcInstallationOrRepairs',
+        'unclogPipes',
+        'changeBathtubForShower',
+        'sinkOrFaucetInstallationAndRepairs',
+        'generalPlumbingServices',
+        'other',
+      ],
+      electricitySubcategories: [
+        'installOutletsOrLightFixtures',
+        'generalElectricityIssues',
+        'restoreElectricity',
+        'installConventionalOrLEDLighting',
+        'installOrRepairCentralElectricalPanel',
+        'otherElectricalInstallations',
+      ],
+      movingServiceSubcategories: [
+        'smallVans',
+        'bigVansOrTrucks',
+        'platformsElevation',
+        'fullMoving',
+        'storageServices',
+      ],
+      paintingSubcategories: [
+        'paintingInside',
+        'paintingOutside',
+        'applyOrRemoveTexturePainting',
+        'applyOrRemoveWallpapers',
+        'bathtubReglazing',
+      ],
+      electricalDevicesSubcategories: [
+        'fridgeRepair',
+        'washingMachineRepair',
+        'ovenRepair',
+        'dishwasherRepair',
+        'otherLargeAppliancesRepair',
+        'smallAppliancesRepair',
+        'smallElectronicsRepair',
+        'antennasInstallationOrRepair',
+        'otherElectricalDevicesRepair',
+      ],
+      carpenterSubcategories: [
+        'woodCarpentry',
+        'aluminiumCarpentry',
+        'otherMetalCarpentry',
+        'pvcCarpentry',
+        'furnitureRepairs',
+        'oldFurnitureRestoration',
+      ],
+      lockSmithSubcategories: [
+        'lockInstallation',
+        'lockRepair',
+        'openALockedDoorUrgent',
+      ],
+      homeWorksSubcategories: [
+        'completeRepair',
+        'kitchen',
+        'bathroom',
+        'terraceOrOutside',
+        'roofWorks',
+        'floorWorks',
+        'surfaceWorks',
+        'tiles',
+        'buildOrRemoveWalls',
+        'apartmentBuildingsRepairs',
+      ],
+      doorsAndWindowsSubcategories: [
+        'woodenDoorsAndWindows',
+        'aluminiumDoorsAndWindows',
+        'plasticDoorsAndWindows',
+        'glazier',
+        'blindsAndShadesInstallationOrRepair',
+      ],
+      upholsterySubcategoreis: [
+        'smallFurniture',
+        'bigFurniture',
+        'furnitureRepairs',
+        'furnitureRestoration',
+      ],
       //all subcategories
       //cleaning
-      home: '',
-      office: '',
-      industrial: '',
-      hotelOrRental: '',
+      home: 'home',
+      office: 'office',
+      industrial: 'industrial',
+      hotelOrRental: 'hotelOrRental',
       //airConditioning
-      acInstallation: '',
-      acMaintenanceOrRepair: '',
-      heatingInstallation: '',
-      heatingMaintenanceOrRepair: '',
+      acInstallation: 'acInstallation',
+      acMaintenanceOrRepair: 'acMaintenanceOrRepair',
+      heatingInstallation: 'heatingInstallation',
+      heatingMaintenanceOrRepair: 'heatingMaintenanceOrRepair',
       //handyman
-      furnitureAssembly: '',
-      smallRepairs: '',
-      hangingShelfOrTv: '',
+      furnitureAssembly: 'furnitureAssembly',
+      smallRepairs: 'smallRepairs',
+      hangingShelfOrTv: 'hangingShelfOrTv',
       //plumbing
-      installOrRepairPlumbing: '',
-      wcInstallationOrRepairs: '',
-      unclogPipes: '',
-      changeBathtubForShower: '',
-      sinkOrFaucetInstallationAndRepairs: '',
-      generalPlumbingServices: '',
-      other: '',
+      installOrRepairPlumbing: 'installOrRepairPlumbing',
+      wcInstallationOrRepairs: 'wcInstallationOrRepairs',
+      unclogPipes: 'unclogPipes',
+      changeBathtubForShower: 'changeBathtubForShower',
+      sinkOrFaucetInstallationAndRepairs: 'sinkOrFaucetInstallationAndRepairs',
+      generalPlumbingServices: 'generalPlumbingServices',
+      other: 'other',
       //electricity
-      installOutletsOrLightFixtures: '',
-      generalElectricityIssues: '',
-      restoreElectricity: '',
-      installConventionalOrLEDLighting: '',
-      installOrRepairCentralElectricalPanel: '',
-      otherElectricalInstallations: '',
+      installOutletsOrLightFixtures: 'installOutletsOrLightFixtures',
+      generalElectricityIssues: 'generalElectricityIssues',
+      restoreElectricity: 'restoreElectricity',
+      installConventionalOrLEDLighting: 'installConventionalOrLEDLighting',
+      installOrRepairCentralElectricalPanel:
+        'installOrRepairCentralElectricalPanel',
+      otherElectricalInstallations: 'otherElectricalInstallations',
       //movingService
-      smallVans: '',
-      bigVansOrTrucks: '',
-      platformsElevation: '',
-      fullMoving: '',
-      storageServices: '',
+      smallVans: 'smallVans',
+      bigVansOrTrucks: 'bigVansOrTrucks',
+      platformsElevation: 'platformsElevation',
+      fullMoving: 'fullMoving',
+      storageServices: 'storageServices',
       //painting
-      paintingInside: '',
-      paintingOutside: '',
-      applyOrRemoveTexturePainting: '',
-      applyOrRemoveWallpapers: '',
-      bathtubReglazing: '',
+      paintingInside: 'paintingInside',
+      paintingOutside: 'paintingOutside',
+      applyOrRemoveTexturePainting: 'applyOrRemoveTexturePainting',
+      applyOrRemoveWallpapers: 'applyOrRemoveWallpapers',
+      bathtubReglazing: 'bathtubReglazing',
       //electricalDevices
-      fridgeRepair: '',
-      washingMachineRepair: '',
-      ovenRepair: '',
-      dishwasherRepair: '',
-      otherLargeAppliancesRepair: '',
-      smallAppliancesRepair: '',
-      smallElectronicsRepair: '',
-      antennasInstallationOrRepair: '',
-      otherElectricalDevicesRepair: '',
+      fridgeRepair: 'fridgeRepair',
+      washingMachineRepair: 'washingMachineRepair',
+      ovenRepair: 'ovenRepair',
+      dishwasherRepair: 'dishwasherRepair',
+      otherLargeAppliancesRepair: 'otherLargeAppliancesRepair',
+      smallAppliancesRepair: 'smallAppliancesRepair',
+      smallElectronicsRepair: 'smallElectronicsRepair',
+      antennasInstallationOrRepair: 'antennasInstallationOrRepair',
+      otherElectricalDevicesRepair: 'otherElectricalDevicesRepair',
+      //carpenter
+      woodCarpentry: 'woodCarpentry',
+      aluminiumCarpentry: 'aluminiumCarpentry',
+      otherMetalCarpentry: 'otherMetalCarpentry',
+      pvcCarpentry: 'pvcCarpentry',
+      furnitureRepairs: 'furnitureRepairs',
+      oldFurnitureRestoration: 'oldFurnitureRestoration',
+      //locksmith
+      lockInstallation: 'lockInstallation',
+      lockRepair: 'lockRepair',
+      openALockedDoorUrgent: 'openALockedDoorUrgent',
+      //homeWorks
+      completeRepair: 'completeRepair',
+      kitchen: 'kitchen',
+      bathroom: 'bathroom',
+      terraceOrOutside: 'terraceOrOutside',
+      roofWorks: 'roofWorks',
+      floorWorks: 'floorWorks',
+      surfaceWorks: 'surfaceWorks',
+      tiles: 'tiles',
+      buildOrRemoveWalls: 'buildOrRemoveWalls',
+      apartmentBuildingsRepairs: 'apartmentBuildingsRepairs',
+      //doorsAndWindows
+      woodenDoorsAndWindows: 'woodenDoorsAndWindows',
+      aluminiumDoorsAndWindows: 'aluminiumDoorsAndWindows',
+      plasticDoorsAndWindows: 'plasticDoorsAndWindows',
+      glazier: 'glazier',
+      blindsAndShadesInstallationOrRepair:
+        'blindsAndShadesInstallationOrRepair',
+      //upholstery
+      smallFurniture: 'smallFurniture',
+      bigFurniture: 'bigFurniture',
+      furnitureRepairs: 'furnitureRepairs',
+      furnitureRestoration: 'furnitureRestoration',
     };
   }
-
-  nextButtonPress = () => {
-    this.props.navigation.navigate('SignUpStepSix');
+  warningTextDecider = () => {
+    if (this.state.showWarning) {
+      return (
+        <Text
+          style={{
+            color: 'red',
+            fontSize: 0.018 * screenHeight,
+            marginHorizontal: 0.05 * screenWidth,
+          }}>
+          Please select at least one subcategory for each category you support
+        </Text>
+      );
+    } else {
+      return (
+        <Text
+          style={{
+            color: 'transparent',
+            fontSize: 0.018 * screenHeight,
+            marginStart: 0.05 * screenWidth,
+          }}>
+          Please select at least one subcategory for each category you support
+        </Text>
+      );
+    }
   };
 
+  nextButtonPress = () => {
+    if (this.selectedCategories.indexOf('cleaning') != -1) {
+      if (this.state.cleaningSubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('airConditioning') != -1) {
+      if (this.state.airConditioningSubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('handy') != -1) {
+      if (this.state.handymanSubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('plumbing') != -1) {
+      if (this.state.plumbingSubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('electricity') != -1) {
+      if (this.state.electricitySubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('movingService') != -1) {
+      if (this.state.movingServiceSubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('painting') != -1) {
+      if (this.state.paintingSubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('electricalDevices') != -1) {
+      if (this.state.electricalDevicesSubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('carpenter') != -1) {
+      if (this.state.carpenterSubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('lockSmith') != -1) {
+      if (this.state.lockSmithSubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('homeWorks') != -1) {
+      if (this.state.homeWorksSubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('doorsAndWindows') != -1) {
+      if (this.state.doorsAndWindowsSubcategories.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    if (this.selectedCategories.indexOf('upholstery') != -1) {
+      if (this.state.upholsterySubcategoreis.length === 0) {
+        this.setState({
+          showWarning: true,
+          allowNavigate: false,
+        });
+        return;
+      } else {
+        this.setState({allowNavigate: true});
+      }
+    }
+    //navigating check
+    if (this.state.allowNavigate === true) console.log('masla hai');
+    else this.props.navigation.navigate('SignUpStepSix');
+  };
   render() {
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -1563,10 +1853,936 @@ export default class SignUpStepFour extends Component {
                 </TouchableOpacity>
               </View>
             )}
+            {/* carpenter */}
+            {this.selectedCategories.indexOf('carpenter') === -1 ? null : (
+              <View>
+                <Text style={styles.categoriesText}>Carpenter</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.woodCarpentry === 'woodCarpentry') {
+                      this.setState({woodCarpentry: ''});
+                      this.state.carpenterSubcategories.splice(
+                        this.state.carpenterSubcategories.indexOf(
+                          'woodCarpentry',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        woodCarpentry: 'woodCarpentry',
+                      });
+                      this.state.carpenterSubcategories.push('woodCarpentry');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Wood Carpentry</Text>
+                  {this.state.woodCarpentry === 'woodCarpentry' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (
+                      this.state.aluminiumCarpentry === 'aluminiumCarpentry'
+                    ) {
+                      this.setState({aluminiumCarpentry: ''});
+                      this.state.carpenterSubcategories.splice(
+                        this.state.carpenterSubcategories.indexOf(
+                          'aluminiumCarpentry',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        aluminiumCarpentry: 'aluminiumCarpentry',
+                      });
+                      this.state.carpenterSubcategories.push(
+                        'aluminiumCarpentry',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Aluminium Carpentry
+                  </Text>
+                  {this.state.aluminiumCarpentry === 'aluminiumCarpentry' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (
+                      this.state.otherMetalCarpentry === 'otherMetalCarpentry'
+                    ) {
+                      this.setState({otherMetalCarpentry: ''});
+                      this.state.carpenterSubcategories.splice(
+                        this.state.carpenterSubcategories.indexOf(
+                          'otherMetalCarpentry',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        otherMetalCarpentry: 'otherMetalCarpentry',
+                      });
+                      this.state.carpenterSubcategories.push(
+                        'otherMetalCarpentry',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Other Metal Carpentry
+                  </Text>
+                  {this.state.otherMetalCarpentry === 'otherMetalCarpentry' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.pvcCarpentry === 'pvcCarpentry') {
+                      this.setState({pvcCarpentry: ''});
+                      this.state.carpenterSubcategories.splice(
+                        this.state.carpenterSubcategories.indexOf(
+                          'pvcCarpentry',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        pvcCarpentry: 'pvcCarpentry',
+                      });
+                      this.state.carpenterSubcategories.push('pvcCarpentry');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>PVC Carpentry</Text>
+                  {this.state.pvcCarpentry === 'pvcCarpentry' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.furnitureRepairs === 'furnitureRepairs') {
+                      this.setState({furnitureRepairs: ''});
+                      this.state.carpenterSubcategories.splice(
+                        this.state.carpenterSubcategories.indexOf(
+                          'furnitureRepairs',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        furnitureRepairs: 'furnitureRepairs',
+                      });
+                      this.state.carpenterSubcategories.push(
+                        'furnitureRepairs',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Furniture Repair</Text>
+                  {this.state.furnitureRepairs === 'furnitureRepairs' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (
+                      this.state.oldFurnitureRestoration ===
+                      'oldFurnitureRestoration'
+                    ) {
+                      this.setState({oldFurnitureRestoration: ''});
+                      this.state.carpenterSubcategories.splice(
+                        this.state.carpenterSubcategories.indexOf(
+                          'oldFurnitureRestoration',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        oldFurnitureRestoration: 'oldFurnitureRestoration',
+                      });
+                      this.state.carpenterSubcategories.push(
+                        'oldFurnitureRestoration',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Old Furniture Restoration
+                  </Text>
+                  {this.state.oldFurnitureRestoration ===
+                  'oldFurnitureRestoration' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+              </View>
+            )}
+            {/* lockSmith */}
+            {this.selectedCategories.indexOf('lockSmith') === -1 ? null : (
+              <View>
+                <Text style={styles.categoriesText}>Lock Smith</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.lockInstallation === 'lockInstallation') {
+                      this.setState({lockInstallation: ''});
+                      this.state.lockSmithSubcategories.splice(
+                        this.state.lockSmithSubcategories.indexOf(
+                          'lockInstallation',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        lockInstallation: 'lockInstallation',
+                      });
+                      this.state.lockSmithSubcategories.push(
+                        'lockInstallation',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Lock Installation
+                  </Text>
+                  {this.state.lockInstallation === 'lockInstallation' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.lockRepair === 'lockRepair') {
+                      this.setState({lockRepair: ''});
+                      this.state.lockSmithSubcategories.splice(
+                        this.state.lockSmithSubcategories.indexOf('lockRepair'),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        lockRepair: 'lockRepair',
+                      });
+                      this.state.lockSmithSubcategories.push('lockRepair');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Lock Repair</Text>
+                  {this.state.lockRepair === 'lockRepair' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (
+                      this.state.openALockedDoorUrgent ===
+                      'openALockedDoorUrgent'
+                    ) {
+                      this.setState({openALockedDoorUrgent: ''});
+                      this.state.lockSmithSubcategories.splice(
+                        this.state.lockSmithSubcategories.indexOf(
+                          'openALockedDoorUrgent',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        openALockedDoorUrgent: 'openALockedDoorUrgent',
+                      });
+                      this.state.lockSmithSubcategories.push(
+                        'openALockedDoorUrgent',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Open a locked door(Urgent)
+                  </Text>
+                  {this.state.openALockedDoorUrgent ===
+                  'openALockedDoorUrgent' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+              </View>
+            )}
+            {/* homeWorks */}
+            {this.selectedCategories.indexOf('homeWorks') === -1 ? null : (
+              <View>
+                <Text style={styles.categoriesText}>Home Works</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.completeRepair === 'completeRepair') {
+                      this.setState({completeRepair: ''});
+                      this.state.homeWorksSubcategories.splice(
+                        this.state.homeWorksSubcategories.indexOf(
+                          'completeRepair',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        completeRepair: 'completeRepair',
+                      });
+                      this.state.homeWorksSubcategories.push('completeRepair');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Complete Repair</Text>
+                  {this.state.completeRepair === 'completeRepair' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.kitchen === 'kitchen') {
+                      this.setState({kitchen: ''});
+                      this.state.homeWorksSubcategories.splice(
+                        this.state.homeWorksSubcategories.indexOf('kitchen'),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        kitchen: 'kitchen',
+                      });
+                      this.state.homeWorksSubcategories.push('kitchen');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Kitchen</Text>
+                  {this.state.kitchen === 'kitchen' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.bathroom === 'bathroom') {
+                      this.setState({bathroom: ''});
+                      this.state.homeWorksSubcategories.splice(
+                        this.state.homeWorksSubcategories.indexOf('bathroom'),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        bathroom: 'bathroom',
+                      });
+                      this.state.homeWorksSubcategories.push('bathroom');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Bathroom</Text>
+                  {this.state.bathroom === 'bathroom' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.terraceOrOutside === 'terraceOrOutside') {
+                      this.setState({terraceOrOutside: ''});
+                      this.state.homeWorksSubcategories.splice(
+                        this.state.homeWorksSubcategories.indexOf(
+                          'terraceOrOutside',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        terraceOrOutside: 'terraceOrOutside',
+                      });
+                      this.state.homeWorksSubcategories.push(
+                        'terraceOrOutside',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Terrace/Outside</Text>
+                  {this.state.terraceOrOutside === 'terraceOrOutside' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.roofWorks === 'roofWorks') {
+                      this.setState({roofWorks: ''});
+                      this.state.homeWorksSubcategories.splice(
+                        this.state.homeWorksSubcategories.indexOf('roofWorks'),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        roofWorks: 'roofWorks',
+                      });
+                      this.state.homeWorksSubcategories.push('roofWorks');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Roof Works</Text>
+                  {this.state.roofWorks === 'roofWorks' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.floorWorks === 'floorWorks') {
+                      this.setState({floorWorks: ''});
+                      this.state.homeWorksSubcategories.splice(
+                        this.state.homeWorksSubcategories.indexOf('floorWorks'),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        floorWorks: 'floorWorks',
+                      });
+                      this.state.homeWorksSubcategories.push('floorWorks');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Floor Works</Text>
+                  {this.state.floorWorks === 'floorWorks' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.surfaceWorks === 'surfaceWorks') {
+                      this.setState({surfaceWorks: ''});
+                      this.state.homeWorksSubcategories.splice(
+                        this.state.homeWorksSubcategories.indexOf(
+                          'surfaceWorks',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        surfaceWorks: 'surfaceWorks',
+                      });
+                      this.state.homeWorksSubcategories.push('surfaceWorks');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Surface Works</Text>
+                  {this.state.surfaceWorks === 'surfaceWorks' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.tiles === 'tiles') {
+                      this.setState({tiles: ''});
+                      this.state.homeWorksSubcategories.splice(
+                        this.state.homeWorksSubcategories.indexOf('tiles'),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        tiles: 'tiles',
+                      });
+                      this.state.homeWorksSubcategories.push('tiles');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Tiles</Text>
+                  {this.state.tiles === 'tiles' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (
+                      this.state.buildOrRemoveWalls === 'buildOrRemoveWalls'
+                    ) {
+                      this.setState({buildOrRemoveWalls: ''});
+                      this.state.homeWorksSubcategories.splice(
+                        this.state.homeWorksSubcategories.indexOf(
+                          'buildOrRemoveWalls',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        buildOrRemoveWalls: 'buildOrRemoveWalls',
+                      });
+                      this.state.homeWorksSubcategories.push(
+                        'buildOrRemoveWalls',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Build/Remove Walls
+                  </Text>
+                  {this.state.buildOrRemoveWalls === 'buildOrRemoveWalls' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (
+                      this.state.apartmentBuildingsRepairs ===
+                      'apartmentBuildingsRepairs'
+                    ) {
+                      this.setState({apartmentBuildingsRepairs: ''});
+                      this.state.homeWorksSubcategories.splice(
+                        this.state.homeWorksSubcategories.indexOf(
+                          'apartmentBuildingsRepairs',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        apartmentBuildingsRepairs: 'apartmentBuildingsRepairs',
+                      });
+                      this.state.homeWorksSubcategories.push(
+                        'apartmentBuildingsRepairs',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Apartment Building Repairs
+                  </Text>
+                  {this.state.apartmentBuildingsRepairs ===
+                  'apartmentBuildingsRepairs' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+              </View>
+            )}
+            {/* doorsAndWindows */}
+            {this.selectedCategories.indexOf('doorsAndWindows') ===
+            -1 ? null : (
+              <View>
+                <Text style={styles.categoriesText}>Doors And Windows</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (
+                      this.state.woodenDoorsAndWindows ===
+                      'woodenDoorsAndWindows'
+                    ) {
+                      this.setState({woodenDoorsAndWindows: ''});
+                      this.state.doorsAndWindowsSubcategories.splice(
+                        this.state.doorsAndWindowsSubcategories.indexOf(
+                          'woodenDoorsAndWindows',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        woodenDoorsAndWindows: 'woodenDoorsAndWindows',
+                      });
+                      this.state.doorsAndWindowsSubcategories.push(
+                        'woodenDoorsAndWindows',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Wooden Doors and Windows
+                  </Text>
+                  {this.state.woodenDoorsAndWindows ===
+                  'woodenDoorsAndWindows' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (
+                      this.state.aluminiumDoorsAndWindows ===
+                      'aluminiumDoorsAndWindows'
+                    ) {
+                      this.setState({aluminiumDoorsAndWindows: ''});
+                      this.state.doorsAndWindowsSubcategories.splice(
+                        this.state.doorsAndWindowsSubcategories.indexOf(
+                          'aluminiumDoorsAndWindows',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        aluminiumDoorsAndWindows: 'aluminiumDoorsAndWindows',
+                      });
+                      this.state.doorsAndWindowsSubcategories.push(
+                        'aluminiumDoorsAndWindows',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Aluminium Doors and Windows
+                  </Text>
+                  {this.state.aluminiumDoorsAndWindows ===
+                  'aluminiumDoorsAndWindows' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (
+                      this.state.plasticDoorsAndWindows ===
+                      'plasticDoorsAndWindows'
+                    ) {
+                      this.setState({plasticDoorsAndWindows: ''});
+                      this.state.doorsAndWindowsSubcategories.splice(
+                        this.state.doorsAndWindowsSubcategories.indexOf(
+                          'plasticDoorsAndWindows',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        plasticDoorsAndWindows: 'plasticDoorsAndWindows',
+                      });
+                      this.state.doorsAndWindowsSubcategories.push(
+                        'plasticDoorsAndWindows',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Plastic Doors and Windows
+                  </Text>
+                  {this.state.plasticDoorsAndWindows ===
+                  'plasticDoorsAndWindows' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.glazier === 'glazier') {
+                      this.setState({glazier: ''});
+                      this.state.doorsAndWindowsSubcategories.splice(
+                        this.state.doorsAndWindowsSubcategories.indexOf(
+                          'glazier',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        glazier: 'glazier',
+                      });
+                      this.state.doorsAndWindowsSubcategories.push('glazier');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Glazier</Text>
+                  {this.state.glazier === 'glazier' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (
+                      this.state.blindsAndShadesInstallationOrRepair ===
+                      'blindsAndShadesInstallationOrRepair'
+                    ) {
+                      this.setState({blindsAndShadesInstallationOrRepair: ''});
+                      this.state.doorsAndWindowsSubcategories.splice(
+                        this.state.doorsAndWindowsSubcategories.indexOf(
+                          'blindsAndShadesInstallationOrRepair',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        blindsAndShadesInstallationOrRepair:
+                          'blindsAndShadesInstallationOrRepair',
+                      });
+                      this.state.doorsAndWindowsSubcategories.push(
+                        'blindsAndShadesInstallationOrRepair',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Blinds and Shades Installation/Repair
+                  </Text>
+                  {this.state.blindsAndShadesInstallationOrRepair ===
+                  'blindsAndShadesInstallationOrRepair' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+              </View>
+            )}
+            {/* upholtery */}
+            {this.selectedCategories.indexOf('upholstery') === -1 ? null : (
+              <View>
+                <Text style={styles.categoriesText}>Upholstery</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.smallFurniture === 'smallFurniture') {
+                      this.setState({smallFurniture: ''});
+                      this.state.upholsterySubcategoreis.splice(
+                        this.state.upholsterySubcategoreis.indexOf(
+                          'smallFurniture',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        smallFurniture: 'smallFurniture',
+                      });
+                      this.state.upholsterySubcategoreis.push('smallFurniture');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Small Furniture</Text>
+                  {this.state.smallFurniture === 'smallFurniture' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.bigFurniture === 'bigFurniture') {
+                      this.setState({bigFurniture: ''});
+                      this.state.upholsterySubcategoreis.splice(
+                        this.state.upholsterySubcategoreis.indexOf(
+                          'bigFurniture',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        bigFurniture: 'bigFurniture',
+                      });
+                      this.state.upholsterySubcategoreis.push('bigFurniture');
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>Big Furniture</Text>
+                  {this.state.bigFurniture === 'bigFurniture' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.furnitureRepairs === 'furnitureRepairs') {
+                      this.setState({furnitureRepairs: ''});
+                      this.state.upholsterySubcategoreis.splice(
+                        this.state.upholsterySubcategoreis.indexOf(
+                          'furnitureRepairs',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        furnitureRepairs: 'furnitureRepairs',
+                      });
+                      this.state.upholsterySubcategoreis.push(
+                        'furnitureRepairs',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Furniture Repairs
+                  </Text>
+                  {this.state.furnitureRepairs === 'furnitureRepairs' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (
+                      this.state.furnitureRestoration === 'furnitureRestoration'
+                    ) {
+                      this.setState({furnitureRestoration: ''});
+                      this.state.upholsterySubcategoreis.splice(
+                        this.state.upholsterySubcategoreis.indexOf(
+                          'furnitureRestoration',
+                        ),
+                        1,
+                      );
+                    } else {
+                      this.setState({
+                        furnitureRestoration: 'furnitureRestoration',
+                      });
+                      this.state.upholsterySubcategoreis.push(
+                        'furnitureRestoration',
+                      );
+                    }
+                  }}
+                  style={styles.singleRowContainer}>
+                  <Text style={styles.subCategoriesText}>
+                    Furniture Restoration
+                  </Text>
+                  {this.state.furnitureRestoration ===
+                  'furnitureRestoration' ? (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+                    />
+                  )}
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
 
           {/* next buttton */}
           <View style={{marginTop: 0.05 * screenHeight}} />
+          {this.warningTextDecider()}
           <TouchableOpacity
             style={styles.nextButton}
             onPress={() => this.nextButtonPress()}>
@@ -1574,6 +2790,7 @@ export default class SignUpStepFour extends Component {
               Next
             </Text>
           </TouchableOpacity>
+          <View style={{marginTop: 0.02 * screenHeight}} />
         </ScrollView>
       </SafeAreaView>
     );
@@ -1586,6 +2803,7 @@ const styles = StyleSheet.create({
     color: colors.grey,
     alignSelf: 'center',
     marginTop: 0.01 * screenHeight,
+    marginHorizontal: 0.05 * screenWidth,
   },
   nextButton: {
     backgroundColor: colors.theme,
@@ -1614,5 +2832,10 @@ const styles = StyleSheet.create({
   subCategoriesText: {
     fontSize: 0.018 * screenHeight,
     color: colors.grey,
+  },
+  warningText: {
+    color: 'red',
+    fontSize: 0.014 * screenHeight,
+    alignSelf: 'center',
   },
 });

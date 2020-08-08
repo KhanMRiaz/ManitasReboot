@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -16,7 +16,7 @@ import {
 } from '../../../globalConstans/GlobalConstants';
 
 export default class SignUpStepTwo extends Component {
-  static navigationOptions = ({ navigation }) => {
+  static navigationOptions = ({navigation}) => {
     const onBackPress = navigation.getParam('onBackPress');
     return {
       title: 'Step 2 of 6',
@@ -53,57 +53,62 @@ export default class SignUpStepTwo extends Component {
     console.log('backpress calling!');
   };
   warningTextDecider = () => {
-    if (this.state.Español === '' &&
+    if (
+      this.state.Español === '' &&
       this.state.Eesti === '' &&
       this.state.English === '' &&
       this.state.Català === '' &&
       this.state.Русский === '' &&
       this.state.Українська === '' &&
       this.state.Deutsch === '' &&
-      this.state.Français === '') {
+      this.state.Français === ''
+    ) {
       this.languageSelected = false;
-      return <Text
-        style={{
-          color: 'red',
-          fontSize: 0.018 * screenHeight,
-          marginStart: 0.05 * screenWidth,
-        }}>
-        please select at least one language
-      </Text>
+      return (
+        <Text
+          style={{
+            color: 'red',
+            fontSize: 0.018 * screenHeight,
+            marginStart: 0.05 * screenWidth,
+          }}>
+          please select at least one language
+        </Text>
+      );
     } else {
       this.languageSelected = true;
-      return <Text
-        style={{
-          color: 'transparent',
-          fontSize: 0.018 * screenHeight,
-          marginStart: 0.05 * screenWidth,
-        }}>
-        please select at least one language
-      </Text>
+      return (
+        <Text
+          style={{
+            color: 'transparent',
+            fontSize: 0.018 * screenHeight,
+            marginStart: 0.05 * screenWidth,
+          }}>
+          please select at least one language
+        </Text>
+      );
     }
-
-  }
+  };
   nextButtonPress = () => {
     if (this.languageSelected === true) {
-      this.props.navigation.navigate('SignUpStepThree')
+      this.props.navigation.navigate('SignUpStepThree');
     }
   };
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <ScrollView style={{ flex: 1 }}>
-          <View style={{ marginTop: 0.03 * screenHeight }} />
+      <SafeAreaView style={{flex: 1}}>
+        <ScrollView style={{flex: 1}}>
+          <View style={{marginTop: 0.03 * screenHeight}} />
           <Text style={styles.generaText}>
             Please select at least one language you can communicate with
             customers
           </Text>
-          <View style={{ marginTop: 0.05 * screenHeight }} />
+          <View style={{marginTop: 0.05 * screenHeight}} />
           {/* cities */}
           <TouchableOpacity
             style={styles.flastlistRow}
             onPress={() =>
-              this.setState({ Eesti: this.state.Eesti === '' ? 'Eesti' : '' })
+              this.setState({Eesti: this.state.Eesti === '' ? 'Eesti' : ''})
             }>
             <Text
               style={{
@@ -118,10 +123,10 @@ export default class SignUpStepTwo extends Component {
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
               />
             ) : (
-                <Image
-                  source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
-                />
-              )}
+              <Image
+                source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+              />
+            )}
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.flastlistRow}
@@ -143,10 +148,10 @@ export default class SignUpStepTwo extends Component {
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
               />
             ) : (
-                <Image
-                  source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
-                />
-              )}
+              <Image
+                source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+              />
+            )}
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.flastlistRow}
@@ -168,15 +173,15 @@ export default class SignUpStepTwo extends Component {
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
               />
             ) : (
-                <Image
-                  source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
-                />
-              )}
+              <Image
+                source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+              />
+            )}
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.flastlistRow}
             onPress={() =>
-              this.setState({ Català: this.state.Català === '' ? 'Català' : '' })
+              this.setState({Català: this.state.Català === '' ? 'Català' : ''})
             }>
             <Text
               style={{
@@ -191,10 +196,10 @@ export default class SignUpStepTwo extends Component {
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
               />
             ) : (
-                <Image
-                  source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
-                />
-              )}
+              <Image
+                source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+              />
+            )}
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.flastlistRow}
@@ -216,10 +221,10 @@ export default class SignUpStepTwo extends Component {
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
               />
             ) : (
-                <Image
-                  source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
-                />
-              )}
+              <Image
+                source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+              />
+            )}
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.flastlistRow}
@@ -241,10 +246,10 @@ export default class SignUpStepTwo extends Component {
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
               />
             ) : (
-                <Image
-                  source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
-                />
-              )}
+              <Image
+                source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+              />
+            )}
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.flastlistRow}
@@ -266,10 +271,10 @@ export default class SignUpStepTwo extends Component {
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
               />
             ) : (
-                <Image
-                  source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
-                />
-              )}
+              <Image
+                source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+              />
+            )}
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.flastlistRow}
@@ -291,18 +296,18 @@ export default class SignUpStepTwo extends Component {
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
               />
             ) : (
-                <Image
-                  source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
-                />
-              )}
+              <Image
+                source={require('../../../assets/auth/userBRegistrationScreens/unChecked.png')}
+              />
+            )}
           </TouchableOpacity>
           {/* next button */}
-          <View style={{ marginTop: 0.15 * screenHeight }} />
+          <View style={{marginTop: 0.17 * screenHeight}} />
           {this.warningTextDecider()}
           <TouchableOpacity
             style={styles.nextButton}
             onPress={() => this.nextButtonPress()}>
-            <Text style={{ fontSize: 0.022 * screenHeight, color: 'white' }}>
+            <Text style={{fontSize: 0.022 * screenHeight, color: 'white'}}>
               Next
             </Text>
           </TouchableOpacity>

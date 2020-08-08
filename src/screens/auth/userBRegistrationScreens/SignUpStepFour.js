@@ -514,6 +514,7 @@ export default class SignUpStepFour extends Component {
               Next
             </Text>
           </TouchableOpacity>
+          <View style={{marginTop: 0.02 * screenHeight}} />
         </ScrollView>
       </SafeAreaView>
     );
