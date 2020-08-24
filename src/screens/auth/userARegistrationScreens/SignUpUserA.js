@@ -117,13 +117,13 @@ export default class SignUpUserA extends Component {
   };
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
         <KeyboardAwareScrollView>
-          <View style={{marginTop: 0.01 * screenHeight}} />
+          <View style={{marginTop: 0.02 * screenHeight}} />
           {/* logo/header */}
           <Image
             style={styles.logo}
-            source={require('../../../assets/auth/landingScreen/manitas.png')}
+            source={require('../../../assets/auth/landingScreen/logo.png')}
           />
           {/* input fields */}
           <View style={{marginTop: 0.1 * screenHeight}} />
@@ -132,7 +132,6 @@ export default class SignUpUserA extends Component {
           <TextInput
             style={styles.inputFields}
             placeholder={'John'}
-            placeholderTextColor={colors.lightGrey}
             value={this.state.name}
             onChangeText={(text) => this.setState({name: text})}
           />
@@ -142,7 +141,6 @@ export default class SignUpUserA extends Component {
           <TextInput
             style={styles.inputFields}
             placeholder={'Johndoeseryices@gmail.com'}
-            placeholderTextColor={colors.lightGrey}
             value={this.state.email}
             onChangeText={(text) => this.setState({email: text})}
           />
@@ -152,7 +150,6 @@ export default class SignUpUserA extends Component {
           <TextInput
             style={styles.inputFields}
             placeholder={'Password'}
-            placeholderTextColor={colors.lightGrey}
             secureTextEntry={true}
             value={this.state.password}
             onChangeText={(text) => this.setState({password: text})}
@@ -163,7 +160,6 @@ export default class SignUpUserA extends Component {
           <TextInput
             style={styles.inputFields}
             placeholder={'Password'}
-            placeholderTextColor={colors.lightGrey}
             secureTextEntry={true}
             value={this.state.confirmPassword}
             onChangeText={(text) => this.setState({confirmPassword: text})}
@@ -175,7 +171,7 @@ export default class SignUpUserA extends Component {
           <Menu
             style={{
               width: 0.9 * screenWidth,
-              marginTop: 0.023 * screenHeight,
+              marginTop: 0.022 * screenHeight,
               marginStart: 0.03 * screenWidth,
             }}
             ref={this.setMenuRef}
@@ -186,53 +182,57 @@ export default class SignUpUserA extends Component {
                 </Text>
                 <TouchableOpacity onPress={this.showMenu}>
                   <Image
+                    style={{
+                      width: 0.043 * screenWidth,
+                      height: 0.02 * screenWidth,
+                    }}
                     source={require('../../../assets/auth/userARegistrationScreens/downArrow.png')}
                   />
                 </TouchableOpacity>
               </View>
             }>
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{height: 0.06 * screenHeight}}
               onPress={() => {
                 this.setState({city: 'Tallinn'}, this.hideMenu);
               }}>
               Tallinn
             </MenuItem>
-            <MenuDivider />
+            <View style={styles.dividerStyles} />
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{height: 0.06 * screenHeight}}
               onPress={() => {
                 this.setState({city: 'Loksa'}, this.hideMenu);
               }}>
               Loksa
             </MenuItem>
-            <MenuDivider />
+            <View style={styles.dividerStyles} />
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{height: 0.06 * screenHeight}}
               onPress={() => {
                 this.setState({city: 'Maardu'}, this.hideMenu);
               }}>
               Maardu
             </MenuItem>
-            <MenuDivider />
+            <View style={styles.dividerStyles} />
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{height: 0.06 * screenHeight}}
               onPress={() => {
                 this.setState({city: 'Paldiski'}, this.hideMenu);
               }}>
               Paldiski
             </MenuItem>
-            <MenuDivider />
+            <View style={styles.dividerStyles} />
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{height: 0.06 * screenHeight}}
               onPress={() => {
                 this.setState({city: 'Saue'}, this.hideMenu);
               }}>
               Saue
             </MenuItem>
-            <MenuDivider />
+            <View style={styles.dividerStyles} />
             <MenuItem
-              style={{height: 0.05 * screenHeight}}
+              style={{height: 0.06 * screenHeight}}
               onPress={() => {
                 this.setState({city: 'Keila'}, this.hideMenu);
               }}>
@@ -244,15 +244,39 @@ export default class SignUpUserA extends Component {
           <View style={{marginTop: 0.05 * screenHeight}} />
           <Text style={styles.noteText}>
             By clicking Sign Up, you agree to our{' '}
-            <Text style={{textDecorationLine: 'underline'}}>Terms</Text>
+            <TouchableOpacity>
+              <Text
+                style={[
+                  styles.noteText,
+                  {marginHorizontal: 0, textDecorationLine: 'underline'},
+                ]}>
+                Terms
+              </Text>
+            </TouchableOpacity>
           </Text>
           <Text style={styles.noteText}>
             Learn how we collect, use and share your data in our{' '}
-            <Text style={{textDecorationLine: 'underline'}}>data policy </Text>
+            <TouchableOpacity>
+              <Text
+                style={[
+                  styles.noteText,
+                  {marginHorizontal: 0, textDecorationLine: 'underline'},
+                ]}>
+                Data Policy{' '}
+              </Text>
+            </TouchableOpacity>
+          </Text>
+          <Text style={styles.noteText}>
             and how we use cookies and similar technology in our{' '}
-            <Text style={{textDecorationLine: 'underline'}}>
-              cookies policy
-            </Text>{' '}
+            <TouchableOpacity>
+              <Text
+                style={[
+                  styles.noteText,
+                  {marginHorizontal: 0, textDecorationLine: 'underline'},
+                ]}>
+                Cookies Policy
+              </Text>
+            </TouchableOpacity>
           </Text>
           <View style={{marginTop: 0.12 * screenHeight}} />
           <TouchableOpacity
@@ -273,32 +297,35 @@ const styles = StyleSheet.create({
   logo: {
     marginStart: 0.1 * screenWidth,
     width: 0.8 * screenWidth,
-    height: 0.055 * screenHeight,
+    height: 0.12 * screenWidth,
   },
   inputFields: {
     color: 'black',
     borderBottomWidth: 0.001 * screenHeight,
-    borderBottomColor: colors.lightGrey,
+    borderBottomColor: colors.inputFieldsBorder,
     marginHorizontal: 0.05 * screenWidth,
     fontSize: 0.02 * screenHeight,
+    fontFamily: 'Roboto-Regular',
   },
   inputFieldsLabel: {
     marginStart: 0.05 * screenWidth,
     color: colors.grey,
     fontSize: 0.018 * screenHeight,
+    fontFamily: 'Roboto-Regular',
   },
   dropdownFieldContainer: {
     flexDirection: 'row',
     marginHorizontal: 0.05 * screenWidth,
     borderBottomWidth: 0.001 * screenHeight,
-    borderBottomColor: colors.lightGrey,
+    borderBottomColor: colors.inputFieldsBorder,
     justifyContent: 'space-between',
   },
   noteText: {
     textAlign: 'center',
     color: colors.grey,
     marginHorizontal: 0.05 * screenWidth,
-    fontSize: 0.016 * screenHeight,
+    fontSize: 0.029 * screenWidth,
+    fontFamily: 'Roboto-Regular',
   },
   signupButton: {
     backgroundColor: colors.theme,
@@ -307,5 +334,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: (0.05 * screenHeight) / 4,
+  },
+  dividerStyles: {
+    height: 0.0008 * screenHeight,
+    width: 0.9 * screenWidth,
+    backgroundColor: 'gray',
   },
 });

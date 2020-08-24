@@ -31,18 +31,17 @@ export default class LandingScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
         {/* logo */}
-        <View style={{marginTop: 0.01 * screenHeight}} />
+        <View style={{marginTop: 0.02 * screenHeight}} />
         <Image
           style={styles.logo}
-          source={require('../../assets/auth/landingScreen/manitas.png')}
+          source={require('../../assets/auth/landingScreen/logo.png')}
         />
         {/* instruction text */}
         <View style={{marginTop: 0.08 * screenHeight}} />
-        <Text style={styles.instructionText}>
-          Please select the language of the application
-        </Text>
+        <Text style={styles.instructionText}>Please select the language</Text>
+        <Text style={styles.instructionText}>of the application</Text>
         {/* language flags */}
         <View style={{marginTop: 0.05 * screenHeight}} />
         <View style={styles.flagsContainer}>
@@ -63,7 +62,7 @@ export default class LandingScreen extends Component {
             />
             <Text style={styles.flagText}>Espanol</Text>
           </TouchableOpacity>
-          <View style={{marginStart: 0.02 * screenWidth}} />
+          <View style={{marginStart: 0.06 * screenWidth}} />
           <TouchableOpacity
             onPress={() => this.setState({selectedFlag: 'english'})}
             style={[
@@ -101,7 +100,7 @@ export default class LandingScreen extends Component {
             />
             <Text style={styles.flagText}>Eesti</Text>
           </TouchableOpacity>
-          <View style={{marginStart: 0.02 * screenWidth}} />
+          <View style={{marginStart: 0.06 * screenWidth}} />
           <TouchableOpacity
             onPress={() => this.setState({selectedFlag: 'russia'})}
             style={[
@@ -117,13 +116,14 @@ export default class LandingScreen extends Component {
               style={styles.flagsImage}
               source={require('../../assets/auth/landingScreen/russiaFlag.png')}
             />
-            <Text style={styles.flagText}>Russian</Text>
+            <Text style={styles.flagText}>Pусский</Text>
           </TouchableOpacity>
         </View>
         <View style={{marginTop: 0.05 * screenHeight}} />
         <Text style={styles.noteText}>
-          Once you have selected the application language, it cannot be changed.
+          Once you have selected the application language,
         </Text>
+        <Text style={styles.noteText}>it cannot be changed.</Text>
         <Text style={styles.noteText}>
           you will have to re-install the application.
         </Text>
@@ -151,24 +151,35 @@ const styles = StyleSheet.create({
   logo: {
     marginStart: 0.1 * screenWidth,
     width: 0.8 * screenWidth,
-    height: 0.055 * screenHeight,
+    height: 0.12 * screenWidth,
   },
   instructionText: {
-    fontSize: 0.022 * screenHeight,
+    fontSize: 0.023 * screenHeight,
     marginHorizontal: 0.2 * screenWidth,
-    color: colors.grey,
+    color: '#434343',
     textAlign: 'center',
+    fontFamily: 'Roboto-Medium',
   },
   flagsContainer: {
     flexDirection: 'row',
-    marginStart: 0.04 * screenWidth,
+    marginStart: 0.06 * screenWidth,
   },
   singleFlagContainer: {
     paddingTop: 0.01 * screenHeight,
-    width: 0.45 * screenWidth,
-    height: 0.16 * screenHeight,
+    width: 0.41 * screenWidth,
+    height: 0.33 * screenWidth,
     alignItems: 'center',
     borderRadius: 5,
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
   },
   flagsImage: {
     width: 0.2 * screenWidth,
@@ -179,19 +190,24 @@ const styles = StyleSheet.create({
     marginTop: 0.01 * screenHeight,
     color: colors.grey,
     fontSize: 0.022 * screenHeight,
+    fontFamily: 'Roboto-Medium',
   },
   noteText: {
     marginHorizontal: 0.05 * screenWidth,
     textAlign: 'center',
     color: colors.grey,
-    fontSize: 0.018 * screenHeight,
+    fontSize: 0.038 * screenWidth,
+    fontFamily: 'Roboto-Medium',
   },
   nextButton: {
     backgroundColor: colors.theme,
-    marginHorizontal: 0.05 * screenWidth,
     height: 0.05 * screenHeight,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: (0.05 * screenHeight) / 4,
+    position: 'absolute',
+    bottom: 0.05 * screenHeight,
+    left: 0.1 * screenWidth,
+    width: 0.8 * screenWidth,
   },
 });

@@ -20,12 +20,12 @@ export default class selectUserTypeScreen extends Component {
   };
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
-        <View style={{marginTop: 0.01 * screenHeight}} />
+      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+        <View style={{marginTop: 0.02 * screenHeight}} />
         {/* logo/header */}
         <Image
           style={styles.logo}
-          source={require('../../assets/auth/landingScreen/manitas.png')}
+          source={require('../../assets/auth/landingScreen/logo.png')}
         />
         {/* I want to text */}
         <View style={{marginTop: 0.08 * screenHeight}} />
@@ -43,9 +43,7 @@ export default class selectUserTypeScreen extends Component {
             style={styles.toolsImage}
             source={require('../../assets/auth/SelectUserTypeScreen/tools.png')}
           />
-          <View style={{marginStart: 0.08 * screenWidth}} />
           <Text style={styles.offerServicesText}>OFFER SERVICES</Text>
-          <View style={{marginStart: 0.06 * screenWidth}} />
           <Image
             style={styles.rightArrowImage}
             source={require('../../assets/auth/SelectUserTypeScreen/rightArrow.png')}
@@ -63,9 +61,7 @@ export default class selectUserTypeScreen extends Component {
             style={styles.toolsImage}
             source={require('../../assets/auth/SelectUserTypeScreen/search.png')}
           />
-          <View style={{marginStart: 0.08 * screenWidth}} />
           <Text style={styles.offerServicesText}>LOOK FOR SERVICES</Text>
-          <View style={{marginStart: 0.06 * screenWidth}} />
           <Image
             style={styles.rightArrowImage}
             source={require('../../assets/auth/SelectUserTypeScreen/rightArrow.png')}
@@ -84,12 +80,13 @@ const styles = StyleSheet.create({
   logo: {
     marginStart: 0.1 * screenWidth,
     width: 0.8 * screenWidth,
-    height: 0.055 * screenHeight,
+    height: 0.12 * screenWidth,
   },
   iWantToText: {
-    fontSize: 0.04 * screenHeight,
+    fontSize: 0.032 * screenHeight,
     textAlign: 'center',
     color: colors.grey,
+    fontFamily: 'Roboto-Medium',
   },
   offerServicesContainer: {
     width: 0.9 * screenWidth,
@@ -105,8 +102,10 @@ const styles = StyleSheet.create({
     height: 0.05 * screenHeight,
   },
   offerServicesText: {
-    fontSize: 0.024 * screenHeight,
-    width: 0.5 * screenWidth,
+    fontSize: 0.061 * screenWidth,
+    width: 0.64 * screenWidth,
+    paddingStart: 0.06 * screenWidth,
+    fontFamily: 'Roboto-Regular',
   },
   rightArrowImage: {
     height: 0.05 * screenHeight,

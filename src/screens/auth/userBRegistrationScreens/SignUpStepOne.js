@@ -134,7 +134,7 @@ export default class SignUpStepOne extends Component {
           {/* logo/header */}
           <Image
             style={styles.logo}
-            source={require('../../../assets/auth/landingScreen/manitas.png')}
+            source={require('../../../assets/auth/landingScreen/logo.png')}
           />
           {/* input fields */}
           <View style={{marginTop: 0.1 * screenHeight}} />
