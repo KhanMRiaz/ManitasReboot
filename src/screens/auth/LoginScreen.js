@@ -57,7 +57,8 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
-        <KeyboardAwareScrollView style={{flex: 1, backgroundColor: 'white'}}>
+        <KeyboardAwareScrollView
+          contentContainerStyle={{backgroundColor: 'white', flex: 1}}>
           <View style={{marginTop: 0.02 * screenHeight}} />
           {/* logo/header */}
           <Image
@@ -98,25 +99,24 @@ export default class LoginScreen extends Component {
           {/* forgot password */}
           <View style={{marginTop: 0.02 * screenHeight}} />
           <Text style={styles.forgotPassword}>Forgot Password?</Text>
+          {/* bottom background image */}
+          <TouchableOpacity
+            onPress={() => this.registerHerePress()}
+            style={{
+              bottom: -0.15 * screenHeight,
+              zIndex: 1000,
+            }}>
+            <Text style={styles.registerHereText}>
+              New to Manitas? Register here
+            </Text>
+          </TouchableOpacity>
+          <View style={styles.absoluteContainer}>
+            <Image
+              style={styles.bottomBackground}
+              source={require('../../assets/auth/loginScreen/bottomBackground.png')}
+            />
+          </View>
         </KeyboardAwareScrollView>
-        <View style={styles.absoluteContainer}>
-          <Image
-            style={styles.bottomBackground}
-            source={require('../../assets/auth/loginScreen/bottomBackground.png')}
-          />
-        </View>
-        <TouchableOpacity
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0.25 * screenWidth,
-          }}>
-          <Text
-            style={styles.registerHereText}
-            onPress={() => this.registerHerePress()}>
-            New to Manitas? Register here
-          </Text>
-        </TouchableOpacity>
         {this.spinnerRendrer()}
       </SafeAreaView>
     );
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Regular',
   },
   bottomBackground: {
-    height: 0.2 * screenHeight,
+    height: 0.514 * screenWidth,
     width: screenWidth,
   },
   registerHereText: {
@@ -166,10 +166,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textDecorationLine: 'underline',
     fontSize: 0.018 * screenHeight,
-    bottom: 0.07 * screenHeight,
+    fontFamily: 'Roboto-Regular',
   },
-  absoluteContainer: {
-    position: 'absolute',
-    bottom: 0,
-  },
+  absoluteContainer: {},
 });

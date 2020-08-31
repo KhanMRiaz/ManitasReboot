@@ -128,9 +128,15 @@ export default class LandingScreen extends Component {
           you will have to re-install the application.
         </Text>
         {/* next button */}
-        <View style={{marginTop: 0.1 * screenHeight}} />
+        <View style={{marginTop: 0.04 * screenHeight}} />
         {this.state.showWarning && (
-          <Text style={{color: 'red', marginHorizontal: 0.06 * screenWidth}}>
+          <Text
+            style={{
+              color: 'red',
+              marginHorizontal: 0.11 * screenWidth,
+              fontFamily: 'Roboto-Regular',
+              marginBottom: 0.1 * screenHeight,
+            }}>
             Please select the language of the application before clicking Save
           </Text>
         )}

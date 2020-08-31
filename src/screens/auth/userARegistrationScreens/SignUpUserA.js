@@ -334,6 +334,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: (0.05 * screenHeight) / 4,
+    marginTop: 0.03 * screenHeight,
   },
   dividerStyles: {
     height: 0.0008 * screenHeight,

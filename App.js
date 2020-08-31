@@ -1,11 +1,11 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
+import {StatusBar, Image} from 'react-native';
 // navigation imports
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createDrawerNavigator} from 'react-navigation-drawer';
 import {createStackNavigator} from 'react-navigation-stack';
 //constants
-import {screenWidth} from './src/globalConstans/GlobalConstants';
+import {screenWidth, screenHeight} from './src/globalConstans/GlobalConstants';
 import colors from './src/globalConstans/colors';
 //auth screens imports
 import LandingScreen from './src/screens/auth/LandingScreen';
@@ -56,35 +56,30 @@ const AuthStack = createStackNavigator({
     screen: SignUpStepTwo,
     navigationOptions: {
       headerTintColor: 'white',
-      headerBackTitle: '   ',
     },
   },
   SignUpStepThree: {
     screen: SignUpStepThree,
     navigationOptions: {
       headerTintColor: 'white',
-      headerBackTitle: '   ',
     },
   },
   SignUpStepFour: {
     screen: SignUpStepFour,
     navigationOptions: {
       headerTintColor: 'white',
-      headerBackTitle: '   ',
     },
   },
   SignUpStepFive: {
     screen: SignUpStepFive,
     navigationOptions: {
       headerTintColor: 'white',
-      headerBackTitle: '   ',
     },
   },
   SignUpStepSix: {
     screen: SignUpStepSix,
     navigationOptions: {
       headerTintColor: 'white',
-      headerBackTitle: '   ',
     },
   },
 });

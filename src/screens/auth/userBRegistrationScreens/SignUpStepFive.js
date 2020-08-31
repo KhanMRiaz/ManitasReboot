@@ -17,14 +17,49 @@ import {
 
 export default class SignUpStepFour extends Component {
   static navigationOptions = ({navigation}) => {
+    const onBackPress = navigation.getParam('onBackPress');
     return {
-      title: 'Step 5 of 6',
+      title: (
+        <View
+          style={{
+            width: 0.7 * screenWidth,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text
+            style={{
+              color: 'white',
+              marginEnd: 0.05 * screenWidth,
+              fontSize: 0.024 * screenHeight,
+              fontFamily: 'Roboto-Regular',
+            }}>
+            Step 5 of 6
+          </Text>
+        </View>
+      ),
+      headerLeft: (
+        <TouchableOpacity
+          style={{
+            width: 0.1 * screenWidth,
+            height: 0.1 * screenWidth,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          onPress={navigation.getParam('backPress')}>
+          <Image
+            style={{
+              height: 0.02016 * screenHeight,
+              width: 0.012 * screenHeight,
+            }}
+            source={require('../../../assets/Slider.png')}
+          />
+        </TouchableOpacity>
+      ),
       headerStyle: {
         backgroundColor: colors.theme,
       },
       headerTitleStyle: {
-        color: 'white',
-        fontSize: 0.024 * screenHeight,
+        fontFamily: 'Roboto-Regular',
       },
     };
   };
@@ -219,6 +254,13 @@ export default class SignUpStepFour extends Component {
       furnitureRestoration: 'furnitureRestoration',
     };
   }
+  componentDidMount() {
+    this.props.navigation.setParams({backPress: this.backPress});
+  }
+  backPress = () => {
+    console.log('backgetting called:');
+    this.props.navigation.goBack();
+  };
   warningTextDecider = () => {
     if (this.state.showWarning) {
       return (
@@ -226,7 +268,7 @@ export default class SignUpStepFour extends Component {
           style={{
             color: 'red',
             fontSize: 0.018 * screenHeight,
-            marginHorizontal: 0.05 * screenWidth,
+            marginHorizontal: 0.06 * screenWidth,
           }}>
           Please select at least one subcategory for each category you support
         </Text>
@@ -395,11 +437,13 @@ export default class SignUpStepFour extends Component {
   };
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
-        <ScrollView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+        <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+          <View style={{marginTop: 0.01 * screenHeight}} />
           <Text style={styles.generalText}>
-            Please select atleast one sub-category for each category you support
+            Please select atleast one sub-category
           </Text>
+          <Text style={styles.generalText}>for each category you support</Text>
           {/* all categories container */}
           <View style={{marginTop: 0.01 * screenHeight}} />
           <View>
@@ -2786,7 +2830,7 @@ export default class SignUpStepFour extends Component {
           <TouchableOpacity
             style={styles.nextButton}
             onPress={() => this.nextButtonPress()}>
-            <Text style={{fontSize: 0.022 * screenHeight, color: 'white'}}>
+            <Text style={{fontSize: 0.024 * screenHeight, color: 'white'}}>
               Next
             </Text>
           </TouchableOpacity>
@@ -2802,8 +2846,8 @@ const styles = StyleSheet.create({
     fontSize: 0.018 * screenHeight,
     color: colors.grey,
     alignSelf: 'center',
-    marginTop: 0.01 * screenHeight,
     marginHorizontal: 0.05 * screenWidth,
+    fontFamily: 'Roboto-Regular',
   },
   nextButton: {
     backgroundColor: colors.theme,
@@ -2818,6 +2862,7 @@ const styles = StyleSheet.create({
     color: colors.grey,
     marginStart: 0.05 * screenWidth,
     marginTop: 0.01 * screenHeight,
+    fontFamily: 'Roboto-Bold',
   },
   singleRowContainer: {
     marginTop: 0.02 * screenHeight,

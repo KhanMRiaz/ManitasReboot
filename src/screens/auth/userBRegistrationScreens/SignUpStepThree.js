@@ -19,14 +19,48 @@ export default class SignUpStepThree extends Component {
   static navigationOptions = ({navigation}) => {
     const onBackPress = navigation.getParam('onBackPress');
     return {
-      title: 'Step 3 of 6',
+      title: (
+        <View
+          style={{
+            width: 0.7 * screenWidth,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text
+            style={{
+              color: 'white',
+              marginEnd: 0.05 * screenWidth,
+              fontSize: 0.024 * screenHeight,
+              fontFamily: 'Roboto-Regular',
+            }}>
+            Step 3 of 6
+          </Text>
+        </View>
+      ),
       headerStyle: {
         backgroundColor: colors.theme,
       },
       headerTitleStyle: {
-        color: 'white',
-        fontSize: 0.024 * screenHeight,
+        fontFamily: 'Roboto-Regular',
       },
+      headerLeft: (
+        <TouchableOpacity
+          style={{
+            width: 0.1 * screenWidth,
+            height: 0.1 * screenWidth,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          onPress={navigation.getParam('backPress')}>
+          <Image
+            style={{
+              height: 0.02016 * screenHeight,
+              width: 0.012 * screenHeight,
+            }}
+            source={require('../../../assets/Slider.png')}
+          />
+        </TouchableOpacity>
+      ),
     };
   };
 
@@ -43,6 +77,14 @@ export default class SignUpStepThree extends Component {
     this.citySelected = false;
   }
 
+  componentDidMount() {
+    this.props.navigation.setParams({backPress: this.backPress});
+  }
+  backPress = () => {
+    console.log('backgetting called:');
+    this.props.navigation.goBack();
+  };
+
   warningTextDecider = () => {
     if (
       this.state.Maardu === '' &&
@@ -58,7 +100,8 @@ export default class SignUpStepThree extends Component {
           style={{
             color: 'red',
             fontSize: 0.018 * screenHeight,
-            marginStart: 0.05 * screenWidth,
+            marginStart: 0.06 * screenWidth,
+            fontFamily: 'Roboto-Regular',
           }}>
           please select at least one city
         </Text>
@@ -84,11 +127,12 @@ export default class SignUpStepThree extends Component {
   };
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
-        <ScrollView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+        <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
           <View style={{marginTop: 0.03 * screenHeight}} />
+          <Text style={styles.generaText}>Please select at least one city</Text>
           <Text style={styles.generaText}>
-            Please select at least one city where you can provide your service
+            where you can provide your service
           </Text>
           <View style={{marginTop: 0.05 * screenHeight}} />
           {/* cities */}
@@ -99,14 +143,7 @@ export default class SignUpStepThree extends Component {
                 Tallinn: this.state.Tallinn === '' ? 'Tallinn' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Tallinn
-            </Text>
+            <Text style={styles.checkboxLabel}>Tallinn</Text>
             {this.state.Tallinn === 'Tallinn' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -124,14 +161,7 @@ export default class SignUpStepThree extends Component {
                 Loksa: this.state.Loksa === '' ? 'Loksa' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Loksa
-            </Text>
+            <Text style={styles.checkboxLabel}>Loksa</Text>
             {this.state.Loksa === 'Loksa' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -149,14 +179,7 @@ export default class SignUpStepThree extends Component {
                 Maardu: this.state.Maardu === '' ? 'Maardu' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Maardu
-            </Text>
+            <Text style={styles.checkboxLabel}>Maardu</Text>
             {this.state.Maardu === 'Maardu' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -174,14 +197,7 @@ export default class SignUpStepThree extends Component {
                 Paldiski: this.state.Paldiski === '' ? 'Paldiski' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Paldiski
-            </Text>
+            <Text style={styles.checkboxLabel}>Paldiski</Text>
             {this.state.Paldiski === 'Paldiski' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -199,14 +215,7 @@ export default class SignUpStepThree extends Component {
                 Saue: this.state.Saue === '' ? 'Saue' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Saue
-            </Text>
+            <Text style={styles.checkboxLabel}>Saue</Text>
             {this.state.Saue === 'Saue' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -224,14 +233,7 @@ export default class SignUpStepThree extends Component {
                 Keila: this.state.Keila === '' ? 'Keila' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Keila
-            </Text>
+            <Text style={styles.checkboxLabel}>Keila</Text>
             {this.state.Keila === 'Keila' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -243,12 +245,12 @@ export default class SignUpStepThree extends Component {
             )}
           </TouchableOpacity>
           {/* next button */}
-          <View style={{marginTop: 0.3 * screenHeight}} />
+          <View style={{marginTop: 0.28 * screenHeight}} />
           {this.warningTextDecider()}
           <TouchableOpacity
             style={styles.nextButton}
             onPress={() => this.nextButtonPress()}>
-            <Text style={{fontSize: 0.022 * screenHeight, color: 'white'}}>
+            <Text style={{fontSize: 0.024 * screenHeight, color: 'white'}}>
               Next
             </Text>
           </TouchableOpacity>
@@ -264,6 +266,7 @@ const styles = StyleSheet.create({
     color: colors.grey,
     alignSelf: 'center',
     marginHorizontal: 0.05 * screenWidth,
+    fontFamily: 'Roboto-Regular',
   },
   flastlistRow: {
     borderBottomColor: colors.lightGrey,
@@ -274,6 +277,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 0.05 * screenWidth,
     flexDirection: 'row',
     paddingBottom: 0.005 * screenHeight,
+    marginBottom: '1%',
   },
   nextButton: {
     backgroundColor: colors.theme,
@@ -282,5 +286,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: (0.05 * screenHeight) / 4,
+  },
+  checkboxLabel: {
+    color: colors.grey,
+    fontSize: 0.02 * screenHeight,
+    fontWeight: '500',
+    marginBottom: '1%',
   },
 });

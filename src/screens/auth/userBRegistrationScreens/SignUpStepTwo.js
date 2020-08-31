@@ -17,15 +17,45 @@ import {
 
 export default class SignUpStepTwo extends Component {
   static navigationOptions = ({navigation}) => {
-    const onBackPress = navigation.getParam('onBackPress');
     return {
-      title: 'Step 2 of 6',
+      title: (
+        <View
+          style={{
+            width: 0.7 * screenWidth,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text
+            style={{
+              color: 'white',
+              marginEnd: 0.05 * screenWidth,
+              fontSize: 0.024 * screenHeight,
+              fontFamily: 'Roboto-Regular',
+            }}>
+            Step 2 of 6
+          </Text>
+        </View>
+      ),
+      headerLeft: (
+        <TouchableOpacity
+          style={{
+            width: 0.1 * screenWidth,
+            height: 0.1 * screenWidth,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          onPress={navigation.getParam('backPress')}>
+          <Image
+            style={{
+              height: 0.02016 * screenHeight,
+              width: 0.012 * screenHeight,
+            }}
+            source={require('../../../assets/Slider.png')}
+          />
+        </TouchableOpacity>
+      ),
       headerStyle: {
         backgroundColor: colors.theme,
-      },
-      headerTitleStyle: {
-        color: 'white',
-        fontSize: 0.024 * screenHeight,
       },
     };
   };
@@ -45,12 +75,11 @@ export default class SignUpStepTwo extends Component {
     this.languageSelected = false;
   }
   componentDidMount() {
-    this.props.navigation.setParams({
-      onBackPress: this.onBackPress,
-    });
+    this.props.navigation.setParams({backPress: this.backPress});
   }
-  onBackPress = () => {
-    console.log('backpress calling!');
+  backPress = () => {
+    console.log('backgetting called:');
+    this.props.navigation.goBack();
   };
   warningTextDecider = () => {
     if (
@@ -69,7 +98,8 @@ export default class SignUpStepTwo extends Component {
           style={{
             color: 'red',
             fontSize: 0.018 * screenHeight,
-            marginStart: 0.05 * screenWidth,
+            marginStart: 0.06 * screenWidth,
+            fontFamily: 'Roboto-Regular',
           }}>
           please select at least one language
         </Text>
@@ -96,12 +126,14 @@ export default class SignUpStepTwo extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
-        <ScrollView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+        <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
           <View style={{marginTop: 0.03 * screenHeight}} />
           <Text style={styles.generaText}>
-            Please select at least one language you can communicate with
-            customers
+            Please select at least one language
+          </Text>
+          <Text style={styles.generaText}>
+            you can communicate with customers
           </Text>
           <View style={{marginTop: 0.05 * screenHeight}} />
           {/* cities */}
@@ -110,14 +142,7 @@ export default class SignUpStepTwo extends Component {
             onPress={() =>
               this.setState({Eesti: this.state.Eesti === '' ? 'Eesti' : ''})
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Eesti
-            </Text>
+            <Text style={styles.checkboxLabel}>Eesti</Text>
             {this.state.Eesti === 'Eesti' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -135,14 +160,7 @@ export default class SignUpStepTwo extends Component {
                 English: this.state.English === '' ? 'English' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              English
-            </Text>
+            <Text style={styles.checkboxLabel}>English</Text>
             {this.state.English === 'English' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -160,14 +178,7 @@ export default class SignUpStepTwo extends Component {
                 Español: this.state.Español === '' ? 'Español' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Español
-            </Text>
+            <Text style={styles.checkboxLabel}>Español</Text>
             {this.state.Español === 'Español' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -183,14 +194,7 @@ export default class SignUpStepTwo extends Component {
             onPress={() =>
               this.setState({Català: this.state.Català === '' ? 'Català' : ''})
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Català
-            </Text>
+            <Text style={styles.checkboxLabel}>Català</Text>
             {this.state.Català === 'Català' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -208,14 +212,7 @@ export default class SignUpStepTwo extends Component {
                 Русский: this.state.Русский === '' ? 'Русский' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Русский
-            </Text>
+            <Text style={styles.checkboxLabel}>Русский</Text>
             {this.state.Русский === 'Русский' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -233,14 +230,7 @@ export default class SignUpStepTwo extends Component {
                 Українська: this.state.Українська === '' ? 'Українська' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Українська
-            </Text>
+            <Text style={styles.checkboxLabel}>Українська</Text>
             {this.state.Українська === 'Українська' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -258,14 +248,7 @@ export default class SignUpStepTwo extends Component {
                 Deutsch: this.state.Deutsch === '' ? 'Deutsch' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Deutsch
-            </Text>
+            <Text style={styles.checkboxLabel}>Deutsch</Text>
             {this.state.Deutsch === 'Deutsch' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -283,14 +266,7 @@ export default class SignUpStepTwo extends Component {
                 Français: this.state.Français === '' ? 'Français' : '',
               })
             }>
-            <Text
-              style={{
-                color: colors.grey,
-                fontSize: 0.02 * screenHeight,
-                fontWeight: '500',
-              }}>
-              Français
-            </Text>
+            <Text style={styles.checkboxLabel}>Français</Text>
             {this.state.Français === 'Français' ? (
               <Image
                 source={require('../../../assets/auth/userBRegistrationScreens/checked.png')}
@@ -302,12 +278,12 @@ export default class SignUpStepTwo extends Component {
             )}
           </TouchableOpacity>
           {/* next button */}
-          <View style={{marginTop: 0.17 * screenHeight}} />
+          <View style={{marginTop: 0.15 * screenHeight}} />
           {this.warningTextDecider()}
           <TouchableOpacity
             style={styles.nextButton}
             onPress={() => this.nextButtonPress()}>
-            <Text style={{fontSize: 0.022 * screenHeight, color: 'white'}}>
+            <Text style={{fontSize: 0.024 * screenHeight, color: 'white'}}>
               Next
             </Text>
           </TouchableOpacity>
@@ -323,6 +299,7 @@ const styles = StyleSheet.create({
     color: colors.grey,
     alignSelf: 'center',
     marginHorizontal: 0.05 * screenWidth,
+    fontFamily: 'Roboto-Regular',
   },
   flastlistRow: {
     borderBottomColor: colors.lightGrey,
@@ -333,6 +310,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 0.05 * screenWidth,
     flexDirection: 'row',
     paddingBottom: 0.005 * screenHeight,
+    marginBottom: '1%',
   },
   nextButton: {
     backgroundColor: colors.theme,
@@ -341,5 +319,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: (0.05 * screenHeight) / 4,
+    marginBottom: 0.02 * screenHeight,
+  },
+  checkboxLabel: {
+    color: colors.grey,
+    fontSize: 0.02 * screenHeight,
+    fontWeight: '500',
+    marginBottom: '1%',
   },
 });
